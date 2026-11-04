@@ -1,0 +1,363 @@
+@import "tailwindcss";
+
+/* Tailwind v4: setara `darkMode: "class"` — next-themes menaruh class .dark di <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================
+   DESIGN TOKENS (CSS variables)
+   Komponen cukup pakai utility semantik (bg-page, bg-surface, text-fg,
+   text-muted, border-line, ...) — tidak perlu `dark:` di mana-mana.
+   ============================================================ */
+:root {
+  color-scheme: light;
+  --bg: #f9f7f3;
+  --surface: #ffffff;
+  --surface-inset: #f9f7f3;
+  --surface-alt: var(--bg);
+  --border: #e6e4e0;
+  --text: #1d1e22;
+  --text-muted: #717171;
+  --text-faint: #8e8e8e;
+  --accent: #dba734;
+  --accent-hover: #e8bb52;
+  --accent-text: #8a6411;
+  --accent-ink: var(--accent-text);
+  --accent-soft: #f3e2b8;
+  --skeleton: #e6e4e0;
+  --danger: #b91c1c;
+  --danger-border: #b91c1c;
+  --navy: #0b294d;
+  --navy-800: #0f3360;
+  --navy-900: #082040;
+  --nav-bg: rgba(11, 41, 77, 0.92);
+  --nav-border: rgba(255, 255, 255, 0.10);
+  --nav-text: rgba(255, 255, 255, 0.85);
+  --nav-text-active: #ffffff;
+  --nav-language-text: rgba(255, 255, 255, 0.80);
+  --nav-control-border: rgba(255, 255, 255, 0.25);
+  --terminal: #07192f;
+  --on-navy: #ffffff;
+  --tile: var(--navy);
+  --panel: var(--surface);
+  --highlight: var(--navy);
+  --highlight-border: var(--navy);
+
+  --hero-from: var(--navy-900);
+  --hero-via: var(--navy);
+  --hero-to: var(--bg);
+  --hero-fade: var(--bg);
+  --contact-from: var(--navy);
+  --contact-to: var(--navy);
+  --contact-border: transparent;
+
+  --shadow-soft: 0 1px 2px rgb(29 30 34 / 0.04), 0 8px 24px rgb(29 30 34 / 0.05);
+  --shadow-lift: 0 2px 4px rgb(29 30 34 / 0.05), 0 16px 32px -16px rgb(29 30 34 / 0.14);
+  --gold-glow: rgb(219 167 52 / 0.18);
+  --gold-tag-glow: rgb(219 167 52 / 0.25);
+  --gold-spotlight: radial-gradient(circle, rgb(219 167 52 / 0.17) 0%, transparent 68%);
+  --gold-cursor-spotlight: radial-gradient(circle, rgb(219 167 52 / 0.08) 0%, transparent 68%);
+  --gold-grid-line: rgb(219 167 52 / 0.035);
+  --on-navy-grid-line: rgb(255 255 255 / 0.06);
+  --on-navy-glow: rgb(255 255 255 / 0.08);
+  --profile-photo-border: rgb(219 167 52 / 0.6);
+  --profile-photo-glow: rgb(219 167 52 / 0.15);
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #07192f;
+  --surface: #0b294d;
+  --surface-inset: #07192f;
+  --surface-alt: #0a2342;
+  --border: rgb(255 255 255 / 0.08);
+  --text: #e8eef7; /* 13:1 di surface */
+  --text-muted: #b4c2d6;
+  --text-faint: rgb(232 238 247 / 0.4);
+  --accent-text: #dba734;
+  --accent-ink: #dba734; /* 6.7:1 di surface */
+  --accent-soft: rgb(219 167 52 / 0.16);
+  --skeleton: rgb(255 255 255 / 0.12);
+  --danger: #fca5a5;
+  --danger-border: #ef4444;
+  --navy: #0b294d;
+  --navy-800: #0f3360;
+  --navy-900: #082040;
+  --nav-bg: rgba(11, 41, 77, 0.9);
+  --nav-border: rgba(255, 255, 255, 0.10);
+  --nav-text: rgba(255, 255, 255, 0.70);
+  --nav-text-active: #ffffff;
+  --nav-language-text: rgba(255, 255, 255, 0.70);
+  --nav-control-border: rgba(255, 255, 255, 0.15);
+  --terminal: #07192f;
+  --on-navy: #ffffff;
+  --tile: #07192f;
+  --panel: #07192f;
+  --highlight: #0f3360;
+  --highlight-border: rgb(219 167 52 / 0.4);
+
+  --hero-from: #04101f;
+  --hero-via: #07192f;
+  --hero-to: #0b294d;
+  --hero-fade: transparent;
+  --contact-from: #0b294d;
+  --contact-to: #0f3360;
+  --contact-border: rgb(255 255 255 / 0.08);
+
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.25), 0 8px 24px -12px rgb(0 0 0 / 0.45);
+  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.3), 0 16px 32px -16px rgb(0 0 0 / 0.6);
+  --gold-glow: rgb(219 167 52 / 0.18);
+  --gold-tag-glow: rgb(219 167 52 / 0.25);
+  --gold-spotlight: radial-gradient(circle, rgb(219 167 52 / 0.17) 0%, transparent 68%);
+  --gold-cursor-spotlight: radial-gradient(circle, rgb(219 167 52 / 0.08) 0%, transparent 68%);
+  --gold-grid-line: rgb(219 167 52 / 0.035);
+  --on-navy-grid-line: rgb(255 255 255 / 0.06);
+  --on-navy-glow: rgb(255 255 255 / 0.08);
+  --profile-photo-border: rgb(219 167 52 / 0.6);
+  --profile-photo-glow: rgb(219 167 52 / 0.15);
+}
+
+@theme inline {
+  /* Semantik (berubah per tema) */
+  --color-page: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-inset: var(--surface-inset);
+  --color-surface-alt: var(--surface-alt);
+  --color-line: var(--border);
+  --color-fg: var(--text);
+  --color-muted: var(--text-muted);
+  --color-faint: var(--text-faint);
+  --color-gold: var(--accent);
+  --color-gold-hover: var(--accent-hover);
+  --color-gold-ink: var(--accent-ink);
+  --color-accent-text: var(--accent-text);
+  --color-gold-soft: var(--accent-soft);
+  --color-skeleton: var(--skeleton);
+  --color-tile: var(--tile);
+  --color-panel: var(--panel);
+  --color-highlight: var(--highlight);
+  --color-highlight-border: var(--highlight-border);
+  --color-hero-from: var(--hero-from);
+  --color-hero-via: var(--hero-via);
+  --color-hero-to: var(--hero-to);
+  --color-contact-from: var(--contact-from);
+  --color-contact-to: var(--contact-to);
+  --color-contact-border: var(--contact-border);
+  --color-navy: var(--navy);
+  --color-navy-800: var(--navy-800);
+  --color-navy-900: var(--navy-900);
+  --color-terminal: var(--terminal);
+  --color-on-navy: var(--on-navy);
+  --color-danger: var(--danger);
+  --color-danger-border: var(--danger-border);
+}
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", monospace;
+
+  --radius-card: 20px;
+  --radius-card-lg: 24px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#main {
+  scroll-margin-top: 96px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Focus ring yang selalu terlihat (emas, offset) */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* ===== Komponen kecil yang dipakai berulang ===== */
+@layer components {
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+  }
+  @media (min-width: 768px) {
+    .section-label {
+      font-size: 16px;
+    }
+  }
+
+  .micro-label {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  @media (min-width: 768px) {
+    .micro-label {
+      font-size: 14px;
+    }
+  }
+
+  .nav-surface {
+    background-color: var(--nav-bg);
+    border-color: var(--nav-border);
+  }
+
+  .nav-link {
+    color: var(--nav-text);
+  }
+  .nav-link:hover,
+  .nav-link-active {
+    color: var(--nav-text-active);
+  }
+
+  .nav-mobile-link {
+    color: var(--nav-text);
+  }
+  .nav-mobile-link:hover {
+    color: var(--nav-text-active);
+  }
+  .dark .nav-mobile-link:not(.nav-mobile-link-active) {
+    color: rgb(255 255 255 / 0.75);
+  }
+  .nav-mobile-link-active {
+    color: var(--nav-text-active);
+  }
+
+  .nav-language-idle {
+    color: var(--nav-language-text);
+  }
+  .nav-language-idle:hover {
+    color: var(--nav-text-active);
+  }
+
+  .nav-control {
+    border-color: var(--nav-control-border);
+    color: var(--nav-text-active);
+  }
+
+  .nav-mobile-preferences {
+    color: var(--nav-text);
+  }
+
+  .on-dark .section-label,
+  .section-label.on-dark {
+    color: var(--accent);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    padding: 6px 12px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text);
+  }
+  @media (min-width: 768px) {
+    .tag {
+      font-size: 14px;
+    }
+  }
+
+  .skeleton {
+    background: var(--skeleton);
+    border-radius: 999px;
+  }
+}
+
+.hero-glow {
+  background-image: radial-gradient(60% 100% at 50% 100%, var(--gold-glow), transparent 70%);
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, var(--on-navy-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--on-navy-grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(70% 60% at 50% 40%, black, transparent);
+}
+
+.hero-placeholder-glow {
+  background-image: radial-gradient(80% 60% at 50% 30%, var(--on-navy-glow), transparent);
+}
+
+.profile-photo-glow {
+  background-image: radial-gradient(70% 70% at 50% 50%, var(--profile-photo-glow), transparent 72%);
+}
+
+.profile-photo-frame {
+  border-color: var(--profile-photo-border);
+}
+
+.hero-transition {
+  background-image: linear-gradient(to bottom, transparent, var(--hero-fade));
+}
+
+.motion-grid {
+  background-image:
+    linear-gradient(to right, var(--gold-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--gold-grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* ===== Fade-in saat scroll (satu-satunya animasi masuk) ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ===== Transisi warna saat ganti tema =====
+   Class .theme-transition dipasang ThemeToggle ±250ms saat klik, jadi tidak
+   bentrok dengan transisi lain & tidak berjalan saat load. Mati bila reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-transition,
+  html.theme-transition *,
+  html.theme-transition *::before,
+  html.theme-transition *::after {
+    transition-property: color, background-color, border-color, outline-color, fill, stroke, box-shadow, opacity, transform, rotate, scale !important;
+    transition-duration: 200ms !important;
+    transition-timing-function: ease !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
