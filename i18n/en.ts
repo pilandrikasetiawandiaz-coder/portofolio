@@ -144,11 +144,22 @@ export const en: Dictionary = {
     placeholderYear: "Year",
     placeholderTitle: "Experience Title",
     achievementAria: "Achievement",
-    // TODO: fill in — empty strings render as skeletons.
     items: {
-      e1: { title: "", description: "" },
-      e2: { title: "", description: "" },
-      e3: { title: "", description: "" },
+      e1: {
+        title: "August 2026::3rd Place, Networking, NCC UTI",
+        description:
+          "My first competition. Won 3rd place in the Networking category at NCC UTI 2026, which kicked off my journey in networking competitions.",
+      },
+      e2: {
+        title: "September 2026::Olimpiade Jaringan MikroTik (OJM) Competitor",
+        description:
+          "Competed in the Olimpiade Jaringan MikroTik (OJM), a MikroTik-based networking competition, to gain more competition experience and test my skills beyond my own learning environment.",
+      },
+      e3: {
+        title: "October 2026::IONIC Competitor, Networking",
+        description:
+          "Competed in IONIC 2026 in the Networking field as a two-person team, handling the routing part of a Cisco Packet Tracer topology.",
+      },
       e4: { title: "", description: "" },
     },
   },
@@ -177,7 +188,7 @@ export const en: Dictionary = {
   contact: {
     label: "Collaboration & Consulting",
     title: "Contact",
-    text: "Need help setting up a network, servers, or virtualization for your school or business? Tell me what you need — I'll get back to you as soon as possible.",
+    text: "Need help setting up a network, servers, or cloud infrastructure for your school or business? Tell me what you need, and I'll get back to you as soon as possible.",
     whatsappSr: "(WhatsApp)",
     socialAria: "Social media",
     form: {

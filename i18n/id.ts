@@ -144,11 +144,22 @@ export const id: Dictionary = {
     placeholderYear: "Tahun",
     placeholderTitle: "Judul Pengalaman",
     achievementAria: "Pencapaian",
-    // TODO: isi — string kosong ditampilkan sebagai skeleton.
     items: {
-      e1: { title: "", description: "" },
-      e2: { title: "", description: "" },
-      e3: { title: "", description: "" },
+      e1: {
+        title: "Agustus 2026::Juara 3 Networking, NCC UTI",
+        description:
+          "Lomba pertama saya. Meraih juara 3 di kategori Networking NCC UTI 2026, yang menjadi awal saya mengikuti kompetisi jaringan berikutnya.",
+      },
+      e2: {
+        title: "September 2026::Peserta Olimpiade Jaringan MikroTik (OJM)",
+        description:
+          "Mengikuti Olimpiade Jaringan MikroTik (OJM), kompetisi jaringan berbasis MikroTik, untuk menambah pengalaman bertanding dan menguji kemampuan di luar lingkungan belajar sendiri.",
+      },
+      e3: {
+        title: "Oktober 2026::Peserta IONIC, Networking",
+        description:
+          "Mengikuti lomba IONIC 2026 bidang Networking dalam tim berdua, memegang bagian routing pada topologi Cisco Packet Tracer.",
+      },
       e4: { title: "", description: "" },
     },
   },
@@ -177,7 +188,7 @@ export const id: Dictionary = {
   contact: {
     label: "Kolaborasi & Konsultasi",
     title: "Contact",
-    text: "Punya kebutuhan penataan jaringan, server, atau virtualisasi untuk sekolah maupun bisnis? Ceritakan kebutuhan Anda — saya akan membalas secepatnya.",
+    text: "Butuh bantuan menata jaringan, server, atau infrastruktur cloud untuk sekolah atau bisnis Anda? Ceritakan kebutuhan Anda, saya akan membalas secepatnya.",
     whatsappSr: "(WhatsApp)",
     socialAria: "Media sosial",
     form: {

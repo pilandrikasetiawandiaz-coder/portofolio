@@ -25,7 +25,7 @@ export function Experience() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading id="pengalaman-title" label={x.label} title={x.title} subtitle={x.subtitle} />
 
-        <ol ref={timelineRef} className="relative mt-10 grid gap-6 md:mt-12 lg:grid-cols-4 lg:gap-5">
+        <ol ref={timelineRef} className="relative mt-10 grid items-stretch gap-6 md:mt-12 lg:grid-cols-4 lg:gap-5">
           {/* Garis timeline: vertikal (mobile) / horizontal (desktop) */}
           <span aria-hidden="true" className="absolute bottom-6 left-[11px] top-6 w-px bg-line lg:hidden" />
           <span aria-hidden="true" className="absolute left-6 right-6 top-[11px] hidden h-px bg-line lg:block" />
@@ -43,8 +43,12 @@ export function Experience() {
           {experienceItems.map((meta, index) => {
             const hl = "highlight" in meta && meta.highlight;
             const item = x.items[meta.id];
+            // The first three localized titles include their date before this separator.
+            const dateSeparator = item.title.indexOf("::");
+            const title = dateSeparator >= 0 ? item.title.slice(dateSeparator + 2) : item.title;
+            const date = dateSeparator >= 0 ? item.title.slice(0, dateSeparator) : meta.year || x.placeholderYear;
             return (
-              <Reveal as="li" key={meta.id} className="relative pl-10 lg:pl-0 lg:pt-10">
+              <Reveal as="li" key={meta.id} className="relative min-w-0 pl-10 lg:pl-0 lg:pt-10">
                 {/* Node */}
                 <span
                   aria-hidden="true"
@@ -85,11 +89,11 @@ export function Experience() {
                   ) : null}
                   <div className="flex items-start justify-between gap-3">
                     <span
-                      className={`inline-flex rounded-full px-3 py-1 font-mono text-[13px] font-semibold md:text-sm ${
+                      className={`inline-flex whitespace-nowrap rounded-full px-3 py-1 font-mono text-[13px] font-semibold md:text-sm ${
                         hl ? "bg-gold text-navy" : "bg-page text-fg ring-1 ring-line"
                       }`}
                     >
-                      {meta.year || x.placeholderYear}
+                      {date}
                     </span>
                     {hl ? <Trophy className="size-5 shrink-0 text-gold" aria-label={x.achievementAria} /> : null}
                   </div>
@@ -99,17 +103,19 @@ export function Experience() {
                   ) : null}
                   <h3
                     className={`${hl ? "mt-1.5" : "mt-4"} text-base font-bold ${
-                      item.title ? (hl ? "text-on-navy" : "text-fg") : hl ? "text-on-navy/50" : "text-faint"
+                      title ? (hl ? "text-on-navy" : "text-fg") : hl ? "text-on-navy/50" : "text-faint"
                     }`}
                   >
-                    {item.title || x.placeholderTitle}
+                    {title || x.placeholderTitle}
                   </h3>
                   <div className="mt-3">
                     <TextOrSkeleton
                       text={item.description}
                       lines={2}
                       dark={!!hl}
-                      className={`text-sm leading-relaxed ${hl ? "text-on-navy/85" : "text-muted"}`}
+                      className={`text-sm leading-relaxed ${
+                        hl ? "text-on-navy/85" : item.description ? "text-fg" : "text-muted"
+                      }`}
                     />
                   </div>
                 </article>
